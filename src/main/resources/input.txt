@@ -1,0 +1,2 @@
+my file with text for test
+line 2

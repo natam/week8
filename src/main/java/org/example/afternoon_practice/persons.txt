@@ -1,0 +1,2 @@
+Name: Natallia; age: 36; email: test@gmail.com; phone: 2134567; 
+   favorite color: black; favorite books: Title: book1 author: author1 publication year: 2021, address: Fregestr.11, berlin

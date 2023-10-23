@@ -1,0 +1,3 @@
+my file for copy to count number of words
+in two lines
+lines
