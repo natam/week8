@@ -1,5 +1,7 @@
 package org.example.afternoon_practice;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -11,8 +13,17 @@ public class Person {
     private String email;
     private String phone;
     private List<Book> favoriteBooks = new ArrayList<>();
-
     private String favoriteColor;
+
+    private String address;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
     public String getName() {
         return name;
@@ -25,7 +36,6 @@ public class Person {
     public void setFavoriteColor(String favoriteColor) {
         this.favoriteColor = favoriteColor;
     }
-
     public Person() {
     }
 
@@ -97,7 +107,7 @@ public class Person {
                 .append(email)
                 .append("; phone: ")
                 .append(phone)
-                .append("; \n   favorite color: ")
+                .append("; favorite color: ")
                 .append(favoriteColor)
                 .append("; favorite books: ")
                 .append(booksToString());
@@ -116,5 +126,16 @@ public class Person {
     public String booksToString(){
         StringBuilder booksBuilder = new StringBuilder();
         return favoriteBooks.stream().map(Book::toString).collect(Collectors.joining(","));
+    }
+
+    public void exportMyData(String file){
+        try {
+            FileWriter fileWriter = new FileWriter(file);
+            fileWriter.append(this.toString())
+                    .append("\n");
+            fileWriter.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
