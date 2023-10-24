@@ -1,0 +1,1 @@
+Name: Natallia; age: 36; email: tttt@gmail.com; phone: 1197543323; favorite color: red; favorite books: Title: book1 author: author1 publication year: 2000

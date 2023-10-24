@@ -39,30 +39,13 @@ public class Main {
         }
 
         person1.printDetails();
+        person1.setAddress(UI.getStringInput(sc, "Enter your address: "));
 
-        try {
-            FileWriter fileWriter = new FileWriter(personsOutputFile,true);
-            fileWriter.append(person1.toString())
-                    .append(", address: ")
-                    .append(UI.getStringInput(sc, "Enter your address: "))
-                    .append("\n");
-
-            fileWriter.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
+        PersonExport.addPersonAdditionalData(person1.getName(), ", address: " + person1.getAddress()+"\n");
+        String customFile = UI.getStringInput(sc, "Enter file where you would like to export your data: ");
         sc.close();
+        person1.exportMyData(customFile);
 
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(personsOutputFile));
-            String line = reader.readLine();
-            while (line!=null){
-                System.out.println(line);
-                line = reader.readLine();
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        PersonExport.readAndDisplayPersonsData();
     }
 }
