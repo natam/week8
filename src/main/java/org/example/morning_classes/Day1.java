@@ -36,8 +36,8 @@ public class Day1 {
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader("src/main/resources/data.csv"));
             List<String[]> results = bufferedReader.lines().map(line -> line.split(",")).toList();
-            for (String[] line: results) {
-                for (String str: line) {
+            for (String[] line : results) {
+                for (String str : line) {
                     System.out.println(str);
                 }
             }
@@ -47,9 +47,9 @@ public class Day1 {
 
         try {
             BufferedReader br = new BufferedReader(new FileReader("src/main/resources/source.txt"));
-            List<String> words= new ArrayList<>();
+            List<String> words = new ArrayList<>();
             String line = br.readLine();
-            while (line!=null){
+            while (line != null) {
                 words.addAll(Arrays.asList(line.split("\s")));
                 line = br.readLine();
             }
@@ -61,13 +61,8 @@ public class Day1 {
             throw new RuntimeException(e);
         }
 
-        try {
-            Helpers.writeToFile("src/main/resources/output2.txt", "nkh new text");
-            Helpers.writeToFile("src/main/resources/output2.txt", "nkh new text");
-            Helpers.writeToFile("src/main/resources/output2.txt", "new line");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
+        Helpers.writeToFile("src/main/resources/output2.txt", "nkh new text");
+        Helpers.writeToFile("src/main/resources/output2.txt", "nkh new text");
+        Helpers.writeToFile("src/main/resources/output2.txt", "new line");
     }
 }

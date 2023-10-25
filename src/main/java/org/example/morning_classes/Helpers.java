@@ -30,14 +30,17 @@ public class Helpers {
         return inputs;
     }
 
-    public static void writeToFile(String fileName, String textForInput) throws IOException {
-        FileWriter fw = new FileWriter(fileName, true);
-        BufferedReader bs = new BufferedReader(new FileReader(fileName));
-        if(bs.lines().noneMatch(line -> line.contains(textForInput))){
-            fw.append(textForInput).append("\n");
-            fw.close();
-        }else System.out.println("Content already presents in file");
-
+    public static void writeToFile(String fileName, String textForInput) {
+        try {
+            FileWriter fw = new FileWriter(fileName, true);
+            BufferedReader bs = new BufferedReader(new FileReader(fileName));
+            if(bs.lines().noneMatch(line -> line.contains(textForInput))){
+                fw.append(textForInput).append("\n");
+                fw.close();
+            }else System.out.println("Content already presents in file");
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public static void readFromFile(String file, boolean isText){
