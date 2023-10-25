@@ -39,9 +39,21 @@ public class Main {
         }
 
         person1.printDetails();
+        PersonExport.exportPerson(person1);
         person1.setAddress(UI.getStringInput(sc, "Enter your address: "));
 
         PersonExport.addPersonAdditionalData(person1.getName(), ", address: " + person1.getAddress()+"\n");
+        try {
+            System.out.println(PersonExport.getPersonData("Natallia", "phone: [0-9-]*;"));
+            PersonExport.updatePersonData("Natallia", "phone: 111122223333;","phone: [0-9-]*;");
+            System.out.println(PersonExport.getPersonData("Natallia", "phone: [0-9-]*;"));
+            System.out.println(PersonExport.getPersonData("Natallia", "favorite color: [\\w]*;"));
+            System.out.println(PersonExport.getPersonData("Natallia", "address: [A-Za-z0-9,-. ]*"));
+            PersonExport.removePersonDataWithConfirmation("Natallia", sc);
+            Log.getLogsNumber();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
         String customFile = UI.getStringInput(sc, "Enter file where you would like to export your data: ");
         sc.close();
         person1.exportMyData(customFile);

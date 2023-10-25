@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 public class PersonExport {
     public static String personsFile = "src/main/java/org/example/afternoon_practice/persons.txt";
 
-    public void exportPerson(Person person){
+    public static void exportPerson(Person person){
         try {
             FileWriter fileWriter = new FileWriter(personsFile, true);
             fileWriter.append(person.toString())
@@ -111,7 +111,7 @@ public class PersonExport {
                 if(!line.contains(nameData)){
                     lines.add(line);
                 }else {
-                    String answer = UI.getStringInput(sc, "Do you want to update your age? (yes/no): ");
+                    String answer = UI.getStringInput(sc, "Do you want to remove your data? (yes/no): ");
                     if(answer.toLowerCase().equals("no")){
                         lines.add(line);
                         Log.addLog("Read file");
@@ -169,21 +169,6 @@ public class PersonExport {
             Log.addLog("Read file");
         } catch (IOException e) {
             System.out.println(e.toString());
-        }
-    }
-
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        try {
-            System.out.println(PersonExport.getPersonData("Natallia", "phone: [0-9-]*;"));
-            PersonExport.updatePersonData("Natallia", "phone: 111122223333;","phone: [0-9-]*;");
-            System.out.println(PersonExport.getPersonData("Natallia", "phone: [0-9-]*;"));
-            System.out.println(PersonExport.getPersonData("Natallia", "favorite color: [\\w]*;"));
-            System.out.println(PersonExport.getPersonData("Natallia", "address: [A-Za-z0-9,-. ]*"));
-            PersonExport.removePersonDataWithConfirmation("Natallia", sc);
-            sc.close();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
         }
     }
 }

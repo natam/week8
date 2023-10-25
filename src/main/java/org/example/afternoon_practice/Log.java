@@ -1,5 +1,7 @@
 package org.example.afternoon_practice;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -15,6 +17,17 @@ public class Log {
             logWriter.append(logMessage+ " " + dateFormat.format(new Date()));
             logWriter.append("\n");
             logWriter.close();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void getLogsNumber(){
+        try {
+            BufferedReader logsReader = new BufferedReader(new FileReader(LOG_FILE));
+            long logsNumber = logsReader.lines().count();
+            System.out.println(logsNumber + " user file interactions were logged");
+            logsReader.close();
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
