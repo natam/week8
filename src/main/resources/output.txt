@@ -1,3 +1,2 @@
-my file with text for test
-line 2
-My new text for day 3
+MY FILE WITH TEXT FOR TEST
+LINE 2MY NEW TEXT FOR DAY 3

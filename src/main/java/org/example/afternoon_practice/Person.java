@@ -114,6 +114,20 @@ public class Person {
         return stringBuilder.toString();
     }
 
+    public String  toString2(){
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(name)
+                .append(";")
+                .append(age)
+                .append(";")
+                .append(email)
+                .append(";")
+                .append(phone)
+                .append(";")
+                .append(address);
+        return stringBuilder.toString();
+    }
+
     public int getBirthYear(){
         Date currentDate = new Date();
         return currentDate.getYear()-age;
@@ -137,5 +151,27 @@ public class Person {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static int getColumnIndex(String columnName){
+        int columnIndex=0;
+        switch (columnName.toLowerCase()){
+            case "name":
+               columnIndex = 0;
+               break;
+            case "age":
+                columnIndex = 1;
+                break;
+            case "email":
+                columnIndex = 2;
+                break;
+            case "phone":
+                columnIndex = 3;
+                break;
+            case "address":
+                columnIndex = 4;
+                break;
+        }
+        return columnIndex;
     }
 }
