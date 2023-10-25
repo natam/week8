@@ -1,5 +1,7 @@
 package org.example.morning_classes;
 
+import org.example.afternoon_practice.Log;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -68,6 +70,25 @@ public class Helpers {
         }
     }
 
+    public static void copyFile2(String sourceFile) {
+        String fileName = sourceFile.substring(sourceFile.lastIndexOf("/")+1,sourceFile.length()-1);
+        String destinationFile = sourceFile.replaceAll(fileName, "copy_"+fileName);
+        StringBuilder str = new StringBuilder();
+        int ch;
+        try {
+            FileReader fileReader = new FileReader(sourceFile);
+            while ((ch=fileReader.read())!=-1){
+                str.append((char)ch);
+            }
+            fileReader.close();
+            FileWriter fileWriter = new FileWriter(destinationFile);
+            fileWriter.write(str.toString());
+            fileWriter.close();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     public static void readAndDisplayCSV(String fileCSV, char separator){
         try {
             FileInputStream fileInputStream = new FileInputStream(fileCSV);
@@ -94,9 +115,71 @@ public class Helpers {
             while ((str = br.readLine()) != null) {
                 System.out.println(str);
             }
-
+            br.close();
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public static void updateFile(String inputFile, String outputFile){
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+            FileWriter fileWriter = new FileWriter(outputFile);
+            String line = reader.readLine();
+            while (line!=null){
+                line = line.toUpperCase().replaceAll("JAVA", "Python");
+                fileWriter.append(line).append("\n");
+                line = reader.readLine();
+            }
+            reader.close();
+            fileWriter.close();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void readFile(String filePath){
+        File file = new File(filePath);
+        int ch;
+        if(file.exists()){
+            try {
+                FileReader fileReader = new FileReader(file);
+                while((ch = fileReader.read())!=-1){
+                    System.out.print((char) ch);
+                }
+                fileReader.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }else System.out.println("File not found");
+    }
+
+    public static void readNumbersSumAndWrite(String inputFilePath, String outputFilePath){
+        File file = new File(inputFilePath);
+        int ch;
+        StringBuilder number = new StringBuilder();
+        int sum=0;
+        if(file.exists()){
+            try {
+                FileReader fileReader = new FileReader(file);
+                while((ch = fileReader.read())!=-1){
+                    if((char) ch!='\n'){
+                        number.append((char) ch);
+                    }else {
+                        sum+=Integer.parseInt(number.toString());
+                        number.delete(0,number.length());
+                    }
+                }
+                if(!number.isEmpty()){
+                    sum+=Integer.parseInt(number.toString());
+                }
+                fileReader.close();
+                FileWriter fileWriter = new FileWriter(outputFilePath);
+                fileWriter.write(String.valueOf(sum));
+                fileWriter.close();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }else System.out.println("File not found");
     }
 }
