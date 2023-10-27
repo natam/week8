@@ -52,6 +52,24 @@ public class Student implements Serializable {
         return courses;
     }
 
+    public double getGradeForCourse(String courseName){
+        return courses.get(courseName);
+    }
+
+    public String getGradeRange(){
+        if(GPA>=8.0){
+            return "A";
+        } else if (GPA>=6.0) {
+            return "B";
+        } else if (GPA>=4.0) {
+            return "C";
+        }else if (GPA>=2.0){
+            return "D";
+        }else {
+            return "F";
+        }
+    }
+
     public void setCourses(Map<String, Double> courses) {
         this.courses = courses;
     }
@@ -84,6 +102,20 @@ public class Student implements Serializable {
                     .stream()
                     .map(entry -> entry.getKey() + " - " + entry.getValue())
                     .collect(Collectors.joining(","))
+                + " student hobbies: " + String.join(",", hobbies));
+    }
+
+    @Override
+    public String toString() {
+        return ("Student name: " + name
+                + " student age: " + age
+                + " student address: " + address
+                + " student GPA: " + GPA
+                + " student courses: " + courses
+                .entrySet()
+                .stream()
+                .map(entry -> entry.getKey() + " - " + entry.getValue())
+                .collect(Collectors.joining(","))
                 + " student hobbies: " + String.join(",", hobbies));
     }
 

@@ -1,9 +1,18 @@
 package org.example.afternoon_practice.day_4;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-public class Main4 {
-    public static void main(String[] args) {
+public class Utils {
+    public static void printStudents(List<Student> students, String message){
+        System.out.println(message);
+        for (Student student: students){
+            student.print();
+        }
+    }
+
+    public static void createStudensForTestAndSerialize(){
         Student student1 = new Student();
         student1.setName("Natallia");
         student1.setAge(22);
@@ -24,13 +33,7 @@ public class Main4 {
         List<Student> students = new ArrayList<>();
         students.add(student1);
         students.add(student2);
-        //SerializeDeserialize.serializeStudents(students);
         SerializeDeserialize.serializeStudentsList(students);
-        //SerializeDeserialize.doBackupCopy();
-        SerializeDeserialize.getHobbiesAndAverageGPA();
-        //SerializeDeserialize.deserializeStudents();
-        List<Student> loadedStudents = SerializeDeserialize.deserializeStudentsList();
-        SerializeDeserialize.getStudentsGrade("course1");
-        SerializeDeserialize.groupStudentsByGPA();
     }
+
 }
