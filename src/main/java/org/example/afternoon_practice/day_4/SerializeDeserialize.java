@@ -25,6 +25,34 @@ public class SerializeDeserialize {
         }
     }
 
+    public static void serializeStudentsList(List<Student> students) {
+        try (FileOutputStream fileOutputStream = new FileOutputStream(STUDENTS_DATA);
+             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
+            objectOutputStream.writeObject(students);
+            objectOutputStream.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static List<Student> deserializeStudentsList() {
+        try (FileInputStream fileInputStream = new FileInputStream(STUDENTS_DATA);
+             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
+            try {
+                return (List<Student>) objectInputStream.readObject();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (InvalidClassException e) {
+                e.printStackTrace();
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public static List<Student> deserializeStudents() {
         try (FileInputStream fileInputStream = new FileInputStream(STUDENTS_DATA);
              ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
@@ -36,9 +64,9 @@ public class SerializeDeserialize {
                     loadedStudents.add(student);
                 }
                 return loadedStudents;
-            } catch (ClassNotFoundException e){
+            } catch (ClassNotFoundException e) {
                 e.printStackTrace();
-            } catch ( InvalidClassException e){
+            } catch (InvalidClassException e) {
                 e.printStackTrace();
             }
         } catch (FileNotFoundException e) {

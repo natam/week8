@@ -24,9 +24,14 @@ public class Main4 {
         List<Student> students = new ArrayList<>();
         students.add(student1);
         students.add(student2);
-        SerializeDeserialize.serializeStudents(students);
-        SerializeDeserialize.doBackupCopy();
-        SerializeDeserialize.getGPA();
-        SerializeDeserialize.deserializeStudents();
+        //SerializeDeserialize.serializeStudents(students);
+        SerializeDeserialize.serializeStudentsList(students);
+        //SerializeDeserialize.doBackupCopy();
+        //SerializeDeserialize.getGPA();
+        //SerializeDeserialize.deserializeStudents();
+        List<Student> loadedStudents = SerializeDeserialize.deserializeStudentsList();
+        for (Student student: loadedStudents){
+            student.print();
+        }
     }
 }
