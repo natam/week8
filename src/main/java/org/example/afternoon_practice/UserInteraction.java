@@ -27,7 +27,7 @@ public class UserInteraction {
             case "2":
                 int columnIndex = Integer.parseInt(printAndReadOutput("Please enter 0 if you will search by name, 2 - by email or 3 - by phone number:"));
                 String query = printAndReadOutput("Enter value to search: ");
-                PersonCSVExport.printUsers(PersonCSVExport.searchUser(query, columnIndex));
+                PersonCSVExport.searchUser(query, columnIndex).toString();
                 break;
             case "3":
                 String userName = printAndReadOutput("Enter user name you want to update: ");

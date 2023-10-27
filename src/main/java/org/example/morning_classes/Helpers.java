@@ -112,7 +112,7 @@ public class Helpers {
         }
     }
 
-    public static void copyFile2(String sourceFile) {
+    public static void copyFileUsingFileReader(String sourceFile) {
         String fileName = sourceFile.substring(sourceFile.lastIndexOf("/") + 1, sourceFile.length() - 1);
         String destinationFile = sourceFile.replaceAll(fileName, "copy_" + fileName);
         StringBuilder str = new StringBuilder();

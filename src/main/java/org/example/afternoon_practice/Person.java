@@ -114,7 +114,7 @@ public class Person {
         return stringBuilder.toString();
     }
 
-    public String  toString2(){
+    public String toShortString(){
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(name)
                 .append(";")

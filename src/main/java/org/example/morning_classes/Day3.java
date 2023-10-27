@@ -13,7 +13,7 @@ public class Day3 {
         //Exercises from presentation
         Helpers.readFile(INPUT_FILE);
         Helpers.writeToFile(OUTPUT_FILE, "My new text for day 3");
-        Helpers.copyFile2(INPUT_FILE);
+        Helpers.copyFileUsingFileReader(INPUT_FILE);
         Helpers.readNumbersSumAndWrite(INPUT_NUMBERS_FILE,OUTPUT_NUMBERS_FILE);
 
         //Exercise: Text Collector with Uniqueness
