@@ -4,3 +4,12 @@ in4
 in5
 one more
 mmmm
+fox
+elefant
+cat
+dog
+cat
+cow
+spider
+horse
+dog
