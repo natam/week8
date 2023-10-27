@@ -1,0 +1,7 @@
+Report 2023-10-27T17:24:55.052043
+Students count: 2
+Average students GPA: 8.5
+Students hobbies: Coding, Playing guitar, Dancing, Swimming, Painting
+Students: 
+Student name: Natallia student age: 22 student address: Berlin student GPA: 10.0 student courses: course1 - 6.9 student hobbies: Dancing,Swimming,Painting
+Student name: Tom2 student age: 21 student address: Berlin student GPA: 7.0 student courses: course2 - 7.9,course1 - 6.0 student hobbies: Swimming,Playing guitar,Coding
